@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.30;
+pragma solidity ^0.8.30;
 
 import "forge-std/Test.sol";
 import "../src/IfaPriceFeed.sol";
@@ -50,7 +50,7 @@ contract BaseTest is Test {
 
         // Deploy contracts
         priceFeed = new IfaPriceFeed(owner);
-        verifier = new IfaPriceFeedVerifier(relayerNode, address(priceFeed), owner);
+        verifier = new IfaPriceFeedVerifier(relayerNode, address(priceFeed), owner,address(0x1));
 
         // Set verifier in price feed
         priceFeed.setVerifier(address(verifier));

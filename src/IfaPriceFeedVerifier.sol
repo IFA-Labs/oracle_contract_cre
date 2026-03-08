@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.30;
+pragma solidity ^0.8.30;
 
 import {IIfaPriceFeed} from "./Interface/IIfaPriceFeed.sol";
 import {Ownable} from "solady-0.1.12/src/auth/Ownable.sol";
+import {ReceiverTemplate} from "./ReceiverTemplate.sol";
 
-contract IfaPriceFeedVerifier is Ownable {
+contract IfaPriceFeedVerifier is ReceiverTemplate {
     error InvalidRelayerNode(address _address);
     error OnlyRelayerNode(address _caller);
     error InvalidAssetIndexorPriceLength();
@@ -16,8 +17,10 @@ contract IfaPriceFeedVerifier is Ownable {
     address public relayerNode;
     IIfaPriceFeed public immutable IfaPriceFeed;
 
-    constructor(address _relayerNode, address _IIfaPriceFeed, address _owner) {
-        _initializeOwner(_owner); // setting owner of contract
+    constructor(address _relayerNode, address _IIfaPriceFeed, address _owner, address _forwarderAddress)
+        ReceiverTemplate(_forwarderAddress, _owner)
+    {
+        // _initializeOwner(_owner); // setting owner of contract
         relayerNode = _relayerNode;
         IfaPriceFeed = IIfaPriceFeed(_IIfaPriceFeed);
     }
@@ -31,11 +34,15 @@ contract IfaPriceFeedVerifier is Ownable {
         external
         onlyRelayerNode
     {
+        _submitPriceFeed(_assetindex, _prices);
+    }
+
+    function _submitPriceFeed(bytes32[] memory _assetindex, IIfaPriceFeed.PriceFeed[] memory _prices) internal {
         require(_assetindex.length == _prices.length, InvalidAssetIndexorPriceLength());
 
         for (uint256 i = 0; i < _assetindex.length; i++) {
             bytes32 pair = _assetindex[i];
-            IIfaPriceFeed.PriceFeed calldata currentPriceFeed = _prices[i];
+            IIfaPriceFeed.PriceFeed memory currentPriceFeed = _prices[i];
             require(currentPriceFeed.price > 0, InvalidAssePrice());
             uint256 currenttimestamp = currentPriceFeed.lastUpdateTime;
             (IIfaPriceFeed.PriceFeed memory prevPriceFeed,) = IfaPriceFeed.getAssetInfo(pair);
@@ -53,6 +60,13 @@ contract IfaPriceFeedVerifier is Ownable {
         relayerNode = _relayerNode;
         emit RelayerNodeSet(_relayerNode, oldRelayerNode);
     }
+
+    function _processReport(bytes calldata report) internal override {
+        (bytes32[] memory _assetindex, IIfaPriceFeed.PriceFeed[] memory _prices) =
+            abi.decode(report, (bytes32[], IIfaPriceFeed.PriceFeed[]));
+        _submitPriceFeed(_assetindex, _prices);
+    }
+
     ///@dev Override to return true to prevent double-initialization.
 
     function _guardInitializeOwner() internal pure override returns (bool guard) {
