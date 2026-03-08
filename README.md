@@ -1,36 +1,36 @@
 # IFA Oracle Price Feed System
 
 A decentralized oracle solution specialized for stablecoin price data across various currencies (USDC, USDT, EURC, CNGN, etc.), providing accurate and transparent price information. The system stores individual asset prices and calculates exchange rates between any pair of stablecoins or other supported assets.
-### Contract deployed on Assetchain test at :
-```shell
-== Logs ==
-  
-  `IfaPriceFeed` deployed at: `0xBAc31e568883774A632275F9c8E7A5Bd117000F7`
-  `IfaPriceFeedVerifier` deployed at: `0xfA8F9975C81c3b2596E009905Da4B1349Bd93307`
-```
+
 ### Contract deployed on base sepolia at :
 ```shell
 == Logs ==
   
-  `IfaPriceFeed` deployed at: `0xbF2ae81D8Adf3AA22401C4cC4f0116E936e1025b`
-  `IfaPriceFeedVerifier` deployed at: `0xC08CbF336cC0D7163Ef260bF69137c8cA7AF2F3a`
+  `IfaPriceFeed` deployed at: `0x8f9462a57C2Fa750bD91CAf09A463591C27C7Cba`
+  `IfaPriceFeedVerifier` deployed at: `0x03558bbc6743b629994423d2A8d7718259549493`
 ```
-### Contract deployed on BASE MAINNET at :
+
+### Contract deployed on ETHEREUM SEPOLIA at :
 ```shell
 == Logs ==
   
-  `IfaPriceFeed` deployed at: `0xA9F17344689C2c2328F94464998db1d3e35B80dC`
-  `IfaPriceFeedVerifier` deployed at: `0xCca25A8A54Ba36697580270AF6b96B37f57E2A4D`
+  `IfaPriceFeed` deployed at: `0x8f9462a57C2Fa750bD91CAf09A463591C27C7Cba`
+  `IfaPriceFeedVerifier` deployed at: `0x21665E18E6e873660310a2C5D3081aeC5ca56f23`
 ```
-### Contract deployed on MANTLE SEPOLIA at :
-```shell
-== Logs ==
-  
-  `IfaPriceFeed` deployed at: `0xbB85ccAcD96130E94Ad776F5a97b540A5EC82D4a`
-  `IfaPriceFeedVerifier` deployed at: `0xf231c98f062836125747D602F6Bf215b8A44FD68`
-```
+ <!-- ```
+  Deploying from: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  Chain ID: 84532
+  IfaPriceFeed deployed at: 0x8f9462a57C2Fa750bD91CAf09A463591C27C7Cba
+  Owner: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  IfaPriceFeedVerifier deployed at: 0x03558bbc6743b629994423d2A8d7718259549493
 
-
+  = Logs ==
+  Deploying from: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  Chain ID: 11155111
+  IfaPriceFeed deployed at: 0x8f9462a57C2Fa750bD91CAf09A463591C27C7Cba
+  Owner: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  IfaPriceFeedVerifier deployed at: 0x21665E18E6e873660310a2C5D3081aeC5ca56f23
+``` -->
 ## Features
 
 - Store and manage asset price information against USD
