@@ -10,8 +10,8 @@ contract DeployPriceFeed is Script {
     IfaPriceFeed ifaPriceFeed;
     IfaPriceFeedVerifier ifaPriceFeedVerifier;
 
-    bytes32 constant SALT_IfaPriceFeed = keccak256("ifaPriceFeedCREE");
-    bytes32 constant SALT_ifaPriceFeedVerifier = keccak256("ifaPriceFeedVerifierCREE");
+    bytes32 constant SALT_IfaPriceFeed = keccak256("ifaPriceFeedCR");
+    bytes32 constant SALT_ifaPriceFeedVerifier = keccak256("ifaPriceFeedVerifierCR");
 
     address constant Base_Sepolia_Simulation_Testnet =  0x82300bd7c3958625581cc2F77bC6464dcEcDF3e5;
     address constant Ethereum_Sepolia_Simulation_Testnet = 0x15fC6ae953E024d975e77382eEeC56A9101f9F88;

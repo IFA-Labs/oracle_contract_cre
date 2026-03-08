@@ -7,7 +7,9 @@ deploy-sepolia:
 	@forge script script/DeployPriceFeed.s.sol:DeployPriceFeed \
 		--rpc-url $(SEPOLIA_RPC_URL) \
 		--private-key $(private_key) \
-		--etherscan-api-key $(ETHERSCAN_API_KEY) \
+		--verifier etherscan \
+		--verifier-url "https://api.etherscan.io/v2/api?chainid=11155111"\
+		--etherscan-api-key $(ETHERSCAN_v2_API_KEY) \
 		--verify \
 		--broadcast
 # Deploy to Base Sepolia
@@ -15,7 +17,9 @@ deploy-base-sepolia:
 	@forge script script/DeployPriceFeed.s.sol:DeployPriceFeed \
 		--rpc-url $(BASE_SEPOLIA_RPC_URL) \
 		--private-key $(private_key) \
-		--etherscan-api-key $(BASESCAN_API_KEY) \
+		--verifier etherscan \
+		--verifier-url "https://api.etherscan.io/v2/api?chainid=84532"\
+		--etherscan-api-key $(ETHERSCAN_v2_API_KEY) \
 		--verify \
 		--broadcast
 # Deploy to Base mainnet
