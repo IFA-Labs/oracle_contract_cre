@@ -7,7 +7,7 @@ A decentralized oracle solution specialized for stablecoin price data across var
 == Logs ==
   
   `IfaPriceFeed` deployed at: `0xCB1e502B72cdf7D725629C2a3b6eC62a268BC14a`
-  `IfaPriceFeedVerifier` deployed at: `0x7cDB244DE5dBA60c7Bb33f4D29E58F47C7D2F354gi`
+  `IfaPriceFeedVerifier` deployed at: `0x7cDB244DE5dBA60c7Bb33f4D29E58F47C7D2F354`
 ```
 
 ### Contract deployed on ETHEREUM SEPOLIA at :
