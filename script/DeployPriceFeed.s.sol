@@ -4,7 +4,7 @@ pragma solidity ^0.8.30;
 import {Script} from "forge-std/Script.sol";
 import {console} from "forge-std/console.sol";
 import {IfaPriceFeed} from "../src/IfaPriceFeed.sol";
-import {IfaPriceFeedVerifier} from "src/IfaPriceFeedVerifier.sol";
+import {IfaPriceFeedVerifier} from "src/IfaPriceFeedVerifiers.sol";
 
 contract DeployPriceFeed is Script {
     IfaPriceFeed ifaPriceFeed;

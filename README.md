@@ -14,7 +14,12 @@ A decentralized oracle solution specialized for stablecoin price data across var
   IfaPriceFeed deployed at: 0xD87d5829D8C61cAaB1c6A793fFdcCb0Ce7c31f7a
   Owner: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
   IfaPriceFeedVerifier deployed at: 0x2B4D090fc7BDD2E644aae89FFa86976Fd0670249 -->
-
+<!-- == Logs ==
+  Deploying from: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  Chain ID: 11155111
+  IfaPriceFeed deployed at: 0xBB2F6Ae3aD7A048f1967b2f5Ca1e9ff8b1c5a253
+  Owner: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  IfaPriceFeedVerifier deployed at: 0xA8B5dD02ce6e8c04f078304c91A93D39Ce71Cf22 -->
 ## Setting up 1 EVM.
 
 
@@ -22,8 +27,8 @@ A decentralized oracle solution specialized for stablecoin price data across var
 ```shell
 == Logs ==
   
-  `IfaPriceFeed` deployed at: `0xD87d5829D8C61cAaB1c6A793fFdcCb0Ce7c31f7a`
-  `IfaPriceFeedVerifier` deployed at: `0x2B4D090fc7BDD2E644aae89FFa86976Fd0670249`
+  `IfaPriceFeed` deployed at: `0xBB2F6Ae3aD7A048f1967b2f5Ca1e9ff8b1c5a253`
+  `IfaPriceFeedVerifier` deployed at: `0xA8B5dD02ce6e8c04f078304c91A93D39Ce71Cf22`
 ```
  <!-- ```
   == Logs ==
