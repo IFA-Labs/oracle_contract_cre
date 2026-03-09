@@ -79,41 +79,6 @@ abstract contract ReceiverTemplate is IReceiver, Ownable {
         if (s_forwarderAddress != address(0) && msg.sender != s_forwarderAddress) {
             revert InvalidSender(msg.sender, s_forwarderAddress);
         }
-
-        // Security Checks 2-4: Verify workflow identity - ID, owner, and/or name (if any are configured)
-        if (
-            s_expectedWorkflowId != bytes32(0) || s_expectedAuthor != address(0) || s_expectedWorkflowName != bytes10(0)
-        ) {
-            (bytes32 workflowId, bytes10 workflowName, address workflowOwner) = _decodeMetadata(metadata);
-
-            if (s_expectedWorkflowId != bytes32(0) && workflowId != s_expectedWorkflowId) {
-                revert InvalidWorkflowId(workflowId, s_expectedWorkflowId);
-            }
-            if (s_expectedAuthor != address(0) && workflowOwner != s_expectedAuthor) {
-                revert InvalidAuthor(workflowOwner, s_expectedAuthor);
-            }
-
-            // ================================================================
-            // WORKFLOW NAME VALIDATION - REQUIRES AUTHOR VALIDATION
-            // ================================================================
-            // Do not rely on workflow name validation alone. Workflow names are unique
-            // per owner, but not across owners.
-            // Furthermore, workflow names use 40-bit truncation (bytes10), making collisions possible.
-            // Therefore, workflow name validation REQUIRES author (workflow owner) validation.
-            // The code enforces this dependency at runtime.
-            // ================================================================
-            if (s_expectedWorkflowName != bytes10(0)) {
-                // Author must be configured if workflow name is used
-                if (s_expectedAuthor == address(0)) {
-                    revert WorkflowNameRequiresAuthorValidation();
-                }
-                // Validate workflow name matches (author already validated above)
-                if (workflowName != s_expectedWorkflowName) {
-                    revert InvalidWorkflowName(workflowName, s_expectedWorkflowName);
-                }
-            }
-        }
-
         _processReport(report);
     }
 

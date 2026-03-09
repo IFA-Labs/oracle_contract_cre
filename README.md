@@ -9,13 +9,21 @@ A decentralized oracle solution specialized for stablecoin price data across var
   `IfaPriceFeed` deployed at: `0xCB1e502B72cdf7D725629C2a3b6eC62a268BC14a`
   `IfaPriceFeedVerifier` deployed at: `0x7cDB244DE5dBA60c7Bb33f4D29E58F47C7D2F354`
 ```
+<!-- eploying from: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  Chain ID: 11155111
+  IfaPriceFeed deployed at: 0xD87d5829D8C61cAaB1c6A793fFdcCb0Ce7c31f7a
+  Owner: 0xcd6CEEf9081622E5d59C54B7569e0979494dC207
+  IfaPriceFeedVerifier deployed at: 0x2B4D090fc7BDD2E644aae89FFa86976Fd0670249 -->
+
+## Setting up 1 EVM.
+
 
 ### Contract deployed on ETHEREUM SEPOLIA at :
 ```shell
 == Logs ==
   
-  `IfaPriceFeed` deployed at: `0xCB1e502B72cdf7D725629C2a3b6eC62a268BC14a`
-  `IfaPriceFeedVerifier` deployed at: `0xD83e7a81e273258Ef2333b8094b81e8c859B7697`
+  `IfaPriceFeed` deployed at: `0xD87d5829D8C61cAaB1c6A793fFdcCb0Ce7c31f7a`
+  `IfaPriceFeedVerifier` deployed at: `0x2B4D090fc7BDD2E644aae89FFa86976Fd0670249`
 ```
  <!-- ```
   == Logs ==

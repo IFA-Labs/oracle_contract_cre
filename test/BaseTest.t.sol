@@ -50,7 +50,7 @@ contract BaseTest is Test {
 
         // Deploy contracts
         priceFeed = new IfaPriceFeed(owner);
-        verifier = new IfaPriceFeedVerifier(relayerNode, address(priceFeed), owner,address(0x1));
+        verifier = new IfaPriceFeedVerifier(relayerNode, address(priceFeed), owner, address(0x1));
 
         // Set verifier in price feed
         priceFeed.setVerifier(address(verifier));
