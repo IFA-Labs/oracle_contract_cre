@@ -10,10 +10,10 @@ contract DeployPriceFeed is Script {
     IfaPriceFeed ifaPriceFeed;
     IfaPriceFeedVerifier ifaPriceFeedVerifier;
 
-    bytes32 constant SALT_IfaPriceFeed = keccak256("ifaPriceFeedCR");
-    bytes32 constant SALT_ifaPriceFeedVerifier = keccak256("ifaPriceFeedVerifierCR");
+    bytes32 constant SALT_IfaPriceFeed = keccak256("ifaPriceFeeeed");
+    bytes32 constant SALT_ifaPriceFeedVerifier = keccak256("ifaPriceFeeedVerifieer");
 
-    address constant Base_Sepolia_Simulation_Testnet =  0x82300bd7c3958625581cc2F77bC6464dcEcDF3e5;
+    address constant Base_Sepolia_Simulation_Testnet = 0x82300bd7c3958625581cc2F77bC6464dcEcDF3e5;
     address constant Ethereum_Sepolia_Simulation_Testnet = 0x15fC6ae953E024d975e77382eEeC56A9101f9F88;
 
     function run() public {
@@ -45,16 +45,13 @@ contract DeployPriceFeed is Script {
     }
 
     function _deployOracle(address owner, address forwarder) internal {
-        ifaPriceFeed = new IfaPriceFeed{salt: SALT_IfaPriceFeed}(owner);
+        ifaPriceFeed = new IfaPriceFeed(owner);
 
         console.log("IfaPriceFeed deployed at:", address(ifaPriceFeed));
         console.log("Owner:", ifaPriceFeed.owner());
 
-        ifaPriceFeedVerifier = new IfaPriceFeedVerifier{salt: SALT_ifaPriceFeedVerifier}(
-            address(0xCCB3f2CC8592126a80B91B53eE4d7332F54d980d),
-            address(ifaPriceFeed),
-            owner,
-            forwarder
+        ifaPriceFeedVerifier = new IfaPriceFeedVerifier(
+            address(0xCCB3f2CC8592126a80B91B53eE4d7332F54d980d), address(ifaPriceFeed), owner, forwarder
         );
 
         console.log("IfaPriceFeedVerifier deployed at:", address(ifaPriceFeedVerifier));

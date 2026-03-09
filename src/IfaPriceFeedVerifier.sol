@@ -7,6 +7,11 @@ import {Ownable} from "solady-0.1.12/src/auth/Ownable.sol";
 import {ReceiverTemplate} from "./ReceiverTemplate.sol";
 
 contract IfaPriceFeedVerifier is ReceiverTemplate {
+    struct SumissionData {
+        bytes32[] assesetindex;
+        IIfaPriceFeed.PriceFeed[] price;
+    }
+    SumissionData  sumissionData;
     error InvalidRelayerNode(address _address);
     error OnlyRelayerNode(address _caller);
     error InvalidAssetIndexorPriceLength();
@@ -16,6 +21,7 @@ contract IfaPriceFeedVerifier is ReceiverTemplate {
 
     address public relayerNode;
     IIfaPriceFeed public immutable IfaPriceFeed;
+
 
     constructor(address _relayerNode, address _IIfaPriceFeed, address _owner, address _forwarderAddress)
         ReceiverTemplate(_forwarderAddress, _owner)
@@ -60,11 +66,14 @@ contract IfaPriceFeedVerifier is ReceiverTemplate {
         relayerNode = _relayerNode;
         emit RelayerNodeSet(_relayerNode, oldRelayerNode);
     }
+    //@audit make it private 
+    function proceesTheSumission(SumissionData memory data) public {
+        _submitPriceFeed(data.assesetindex, data.price);
+    }
 
     function _processReport(bytes calldata report) internal override {
-        (bytes32[] memory _assetindex, IIfaPriceFeed.PriceFeed[] memory _prices) =
-            abi.decode(report, (bytes32[], IIfaPriceFeed.PriceFeed[]));
-        _submitPriceFeed(_assetindex, _prices);
+        (SumissionData memory data) = abi.decode(report, (SumissionData));
+        proceesTheSumission(data);
     }
 
     ///@dev Override to return true to prevent double-initialization.
