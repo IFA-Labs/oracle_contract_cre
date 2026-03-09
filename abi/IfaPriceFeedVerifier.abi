@@ -171,13 +171,13 @@
                     "components": [
                         {
                             "name": "assesetindex",
-                            "type": "bytes32[]",
-                            "internalType": "bytes32[]"
+                            "type": "bytes32",
+                            "internalType": "bytes32"
                         },
                         {
                             "name": "price",
-                            "type": "tuple[]",
-                            "internalType": "struct IIfaPriceFeed.PriceFeed[]",
+                            "type": "tuple",
+                            "internalType": "struct IIfaPriceFeed.PriceFeed",
                             "components": [
                                 {
                                     "name": "price",
